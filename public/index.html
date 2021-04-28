@@ -1,0 +1,101 @@
+<!doctype html>
+<html class="no-js" lang="it">
+
+<head>
+  <meta charset="utf-8">
+  <title>uniHelp</title>
+  <meta name="description" content="uniHelp">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fafafa">
+
+  <!-- BootStrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href= "css/style.css"/>
+  <link rel="stylesheet" type="text/css" href="css/slider-style.css">
+
+  <!-- JS -->
+  <script src="js/vendor/angular.min.js"></script>
+  <script src="js/vendor/angular-route.min.js"></script>
+
+</head>
+
+<body ng-app="app">
+  
+  <header>
+    <!-- NAVBAR -->
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+
+        <!-- -->
+        <div class="navbar-header">
+          <!-- pulsante menù della nav bar collassata -->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          
+          <a class="navbar-brand" href="#!">Logo</a>
+        </div>
+
+        <!-- navbar effettiva -->
+        <div class="collapse navbar-collapse" id="myNavbar">
+
+          <!-- -->
+          <ul class="nav navbar-nav">
+            <li><a href="#!index">Home</a></li>
+            <li><a href="#!esame">Esami</a></li>
+            <li><a href="#!chiSiamo">Chi Siamo</a></li>
+            <li><a href="#!assistenza">Assistenza</a></li>
+            <li><a href="#!profilo">Profilo</a></li>
+            <li><a href="#!login">Log in</a></li>
+          </ul>
+            
+          <!-- -->
+          <ul class="nav navbar-nav navbar-right">              
+            <li><a href="#!login">Logout</a></li>
+          </ul>
+            
+        </div>		
+      </div>	
+    </nav>
+    <!-- FINE NAVBAR -->
+
+
+    <!-- squarcio iniziale immagine di sfondo -->
+    <div id="intro" class="view"></div>
+
+  </header> 
+  
+  
+  <div class="height">
+
+  <div ng-view></div>
+
+  </div>
+
+
+
+  <footer class="container" style="display: block; padding: 2.5em; width: 100%; background: #333333; color: white">
+    <br>
+    <em>LSSoft&amp;Co. &copy; 2020 (Pisa) Tutti i diritti riservati.</em>
+    <br>
+  </footer>
+
+
+  <!-- app -->
+  <script src="js/app.js"></script>
+  <!-- controllers -->
+  <script src=""></script>
+  <!-- directives -->
+  <script src=""></script>
+  <!-- services -->
+  <script src=""></script>
+
+</body>
+
+</html>
