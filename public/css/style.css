@@ -38,7 +38,7 @@ html, body {
   /* era nell'head prima */
 
   /* era nel body */
-    header { height: 100%; }
+    header { height: 20%; }
 
     /* style suggerimenti */
       div.tab { display: none; position: relative; padding: 0; margin:auto; max-width: 80% }
