@@ -1,0 +1,33 @@
+<form name="login" ng-submit="submit()">
+
+  <h2 ng-if="!inline">Login</h2>
+  <br ng-if="!inline">
+  <input name="user" type="text" ng-model="user" placeholder="{{ userError ? 'utente errato' : 'nome utente'}}" ng-style="userErrorStyle" required>
+  <br ng-if="!inline">
+  <br ng-if="!inline">
+  
+  <input name="pass" type="password" ng-model="pass" placeholder="{{ passError ? 'password errata' : 'password'}}" ng-style="userErrorStyle" required>
+  <br ng-if="!inline">    
+  <br ng-if="!inline">
+
+  <input name="submit" type="submit" ng-disabled="login.user.$invalid || login.pass.$invalid">
+
+</form>
+
+<style>
+  /*
+  .ng-invalid.ng-touched {
+    background-color: rgba(252, 176, 146, 0.1);
+  }
+  */
+
+  input[disabled]{    
+    opacity: 0.7;
+  }input[disabled]:hover{    
+    cursor: not-allowed;
+  }
+
+  form[name="login"]{
+    margin: 1em;
+  }
+</style>

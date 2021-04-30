@@ -7,43 +7,43 @@ app.config(function ($routeProvider) {
     templateUrl: 'views/home.html'
   })  
   .when('/aggiungiEsame', {
-    controller: 'aggiungiEsameController',
+    controller: 'voidController',
     templateUrl: 'views/aggiungiEsame.html'
   })
   .when('/assistenza', {
-    controller: 'assistenzaController',
+    controller: 'voidController',
     templateUrl: 'views/assistenza.html'
   })
   .when('/cambioPassword', {
-    controller: 'cambioPasswordController',
+    controller: 'voidController',
     templateUrl: 'views/cambioPassword.html'
   })
   .when('/chiSiamo', {
-    controller: 'chiSiamoController',
+    controller: 'voidController',
     templateUrl: 'views/chiSiamo.html'
   })
   .when('/confermaCorso', {
-    controller: 'confermaCorsoController',
+    controller: 'voidController',
     templateUrl: 'views/confermaCorso.html'
   })
   .when('/confermaEsame', {
-    controller: 'confermaEsameController',
+    controller: 'voidController',
     templateUrl: 'views/confermaEsame.html'
   })
   .when('/confermaLogin', {
-    controller: 'confermaLoginController',
+    controller: 'voidController',
     templateUrl: 'views/confermaLogin.html'
   })
   .when('/confermaRegistra', {
-    controller: 'confermaRegistraController',
+    controller: 'voidController',
     templateUrl: 'views/confermaRegistra.html'
   })
   .when('/corso', {
-    controller: 'corsoController',
+    controller: 'voidController',
     templateUrl: 'views/corso.html'
   })
   .when('/esame', {
-    controller: 'esameController',
+    controller: 'voidController',
     templateUrl: 'views/esame.html'
   })
   .when('/login', {
