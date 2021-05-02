@@ -1,0 +1,36 @@
+<div style="position: relative;">
+
+  <input 
+    class="searchInput"
+    ng-focus="focusSearch()"
+    type="text" 
+    ng-model="searchString"
+    placeholder="{{placeholder}}"
+  >
+
+  <div ng-show="showResults" style="position: absolute; width: 100%;"> 
+      <p class="searchResults"
+        ng-click="blurSearch()"
+        ng-repeat="el in data | limitTo: 4">
+        {{ el }}
+      </p>
+  </div>
+
+</div>
+
+<style>
+  input.searchInput {
+    width: 100%;
+  }
+  p.searchResults {
+    line-height: 2em;
+    border: 1px black solid;
+    border-top: 0px;
+    background: white;
+  } p.searchResults:hover {
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    background: rgb(31, 146, 253);
+  }
+</style>
