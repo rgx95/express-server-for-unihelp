@@ -1,0 +1,124 @@
+<form>
+<div style="width: 100%;">
+
+  <div class="cerca-uni-corso-esame"> 
+
+      <input type="text"
+        class="form-control searchInput"
+        ng-model="universita.searchString"
+        ng-focus="focusSearch('universita')"
+        onFocus="this.select()"
+        ng-disabled="universita.filled"
+        placeholder="{{universita.placeholder}}"
+        style="width: 100%;">
+    
+      <div class="cerca-uni-corso-esame-p-container" ng-show="universita.showResults"> 
+          <p class="searchResults"
+            ng-click="setAndBlur('universita', el)"
+            ng-repeat="el in universita.data | filter: universita.searchString | limitTo: 4">
+            {{ el }}
+          </p>
+      </div>
+    
+  </div>
+  <div class="cerca-uni-corso-esame">  
+
+      <input type="text"
+        class="form-control searchInput"
+        ng-model="corsi.searchString"
+        ng-focus="focusSearch('corsi')"
+        onFocus="this.select()"
+        ng-disabled="!(universita.filled && !corsi.filled)"
+        placeholder="{{corsi.placeholder}}"
+        style="width: 100%;">
+    
+      <div class="cerca-uni-corso-esame-p-container" ng-show="corsi.showResults"> 
+          <p class="searchResults"
+            ng-click="setAndBlur('corsi', el)"
+            ng-repeat="el in corsi.data | filter: corsi.searchString | limitTo: 4">
+            {{ el }}
+          </p>
+      </div>
+  
+  </div>
+  <div class="cerca-uni-corso-esame">   
+
+      <input type="text"
+        class="form-control searchInput"
+        ng-model="esami.searchString"
+        ng-focus="focusSearch('esami')"
+        onFocus="this.select()"
+        ng-disabled="!(corsi.filled && !esami.filled)"
+        placeholder="{{esami.placeholder}}"
+        style="width: 100%;">
+    
+      <div class="cerca-uni-corso-esame-p-container" ng-show="esami.showResults"> 
+          <p class="searchResults"
+            ng-click="setAndBlur('esami', el)"
+            ng-repeat="el in esami.data | filter: esami.searchString | limitTo: 4">
+            {{ el }}
+          </p>
+      </div>
+  
+  </div>
+
+</div>  
+
+<div class="cerca-uni-corso-esame-button">
+  <br><br>
+  <button class="btn btn-default btn-block" ng-click="resetSearch()">Reset</button>
+</div>
+
+<br>
+
+<div class="cerca-uni-corso-esame-button">
+  <input type="submit" class="btn btn-success btn-block" ng-disabled="!esami.filled" ng-click="submitCerca()" value="Cerca">
+</div>
+
+</form>
+
+<style>
+  @media screen and (min-width: 601px) {
+    div.cerca-uni-corso-esame {
+      width: 33.33%;
+    }
+  } @media screen and (max-width: 600px) {
+    div.cerca-uni-corso-esame {
+      width: 100%;
+    }
+  } div.cerca-uni-corso-esame:after, div.cerca-uni-corso-esame-button:after {
+    /* Clear floats after the columns */
+    content: "";
+    display: table;
+    clear: both;
+  } div.cerca-uni-corso-esame {
+    display: inline;
+    position: relative;
+    /*width: 33.33%;*/
+    padding: 1em;
+    float: left;
+    margin: 0;
+  } div.cerca-uni-corso-esame-button {
+    display: inline-block;
+    width: 100%;
+    padding: 1em;
+    margin: 0;
+  } div.cerca-uni-corso-esame-p-container {
+    position: absolute;
+    
+    z-index: 99;
+    left: 1em; right: 1em;
+  } p.searchResults {
+    line-height: 2em;
+    margin: 0 2em 0 0;
+    width: 100%;
+    border: 1px black solid;
+    border-top: 0px;
+    background: white;
+  } p.searchResults:hover {
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    background: rgb(31, 146, 253);
+  }
+</style>

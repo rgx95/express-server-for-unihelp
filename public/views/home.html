@@ -25,86 +25,14 @@
 </div>
 
 <!-- inizio FORM di RICERCA -->
-<div class="container" style="padding: 4vw; margin: 2em;">
+<div class="container" style="padding: 4vw;">
 
   <br><br>
 
-  <div class="row">
-    <div class="col-md-4">      
-      <search-input data="universita" disabled="next[0]" next="next[0]" reset="reset" placeholder="'Cerca Università'"></search-input>
-    </div>
-    <div class="col-md-4">      
-      <search-input data="corsi" disabled="!(next[0] && !next[1])" next="next[1]" reset="reset" placeholder="'Cerca Corso'"></search-input>
-    </div>
-    <div class="col-md-4">      
-      <search-input data="esami" disabled="!(next[1] && !next[2])" next="next[2]" reset="reset" placeholder="'Cerca Esame'"></search-input>
-    </div>
-  </div>
-
-  <div style="position: relative;">
-
-  <!--<form>
-    <div class="input-group" style="width: 100%;">
-      <input type="text"
-        class="form-control searchInput"
-        ng-model="searchString"
-        ng-focus="focusSearch()"
-        ng-disabled="confirmed || disabled"
-        placeholder="{{placeholder}}">
-      <div class="input-group-btn">
-        <button ng-disabled="disabled" class="btn btn-default"
-          ng-click="cancelInput()">{{ confirmed ? 'delete' : 'search' }}</button>
-      </div>
-    </div>
-  </form>-->
-
-  <input type="text"
-    class="form-control searchInput"
-    ng-model="searchString"
-    ng-focus="focusSearch()"
-    ng-disabled="disabled"
-    placeholder="{{placeholder}}"
-    style="width: 100%;">
-
-  <div ng-show="showResults" style="position: absolute; width: 100%; z-index: 99;"> 
-      <p class="searchResults"
-        ng-click="setAndBlur(el)"
-        ng-repeat="el in data | filter: searchString | limitTo: 4">
-        {{ el }}
-      </p>
-  </div>
-
-</div>
-
-<style>
-  span.input-group-addon {
-    cursor: pointer;
-  }
-  p.searchResults {
-    line-height: 2em;
-    border: 1px black solid;
-    border-top: 0px;
-    background: white;
-  } p.searchResults:hover {
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    background: rgb(31, 146, 253);
-  }
-</style>
+  <cerca-uni-corso-esame></cerca-uni-corso-esame>
 
 
-
-  <br><br>
-
-  <div class="row">
-    <button class="btn btn-default btn-block" ng-click="resetSearch()">Reset</button>
-  </div>
-  <br>
-
-  <div class="row">
-  <button class="btn btn-success btn-block" disabled>Cerca</button>
-  </div>
+  
   
             
   <!-- html form+suggerimenti step-by-step homemade 

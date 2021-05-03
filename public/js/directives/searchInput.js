@@ -17,13 +17,9 @@ app.directive('searchInput', function(){
       scope.setAndBlur = (val) => {         
         scope.searchString = val
         scope.showResults = false
-
-        scope.next = true
       }
       scope.cancelInput = () => {        
         scope.searchString = ""
-
-        scope.next = false
       }
     }
   }
