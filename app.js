@@ -38,6 +38,11 @@ app.get('/esami', function(req, res, next) {
   res.json(arr)
 })
 
+app.get('/login', function(req, res, next) {
+  console.log('try login with user: '+req.query.user+' & pass: '+req.query.pass)
+  res.send()
+})
+
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);

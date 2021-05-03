@@ -1,17 +1,32 @@
 <div style="position: relative;">
 
-  <input 
-    class="searchInput"
-    ng-focus="focusSearch()"
-    type="text" 
-    ng-model="searchString"
-    placeholder="{{placeholder}}"
-  >
+  <!--<form>
+    <div class="input-group" style="width: 100%;">
+      <input type="text"
+        class="form-control searchInput"
+        ng-model="searchString"
+        ng-focus="focusSearch()"
+        ng-disabled="confirmed || disabled"
+        placeholder="{{placeholder}}">
+      <div class="input-group-btn">
+        <button ng-disabled="disabled" class="btn btn-default"
+          ng-click="cancelInput()">{{ confirmed ? 'delete' : 'search' }}</button>
+      </div>
+    </div>
+  </form>-->
 
-  <div ng-show="showResults" style="position: absolute; width: 100%;"> 
+  <input type="text"
+    class="form-control searchInput"
+    ng-model="searchString"
+    ng-focus="focusSearch()"
+    ng-disabled="disabled"
+    placeholder="{{placeholder}}"
+    style="width: 100%;">
+
+  <div ng-show="showResults" style="position: absolute; width: 100%; z-index: 99;"> 
       <p class="searchResults"
-        ng-click="blurSearch()"
-        ng-repeat="el in data | limitTo: 4">
+        ng-click="setAndBlur(el)"
+        ng-repeat="el in data | filter: searchString | limitTo: 4">
         {{ el }}
       </p>
   </div>
@@ -19,8 +34,8 @@
 </div>
 
 <style>
-  input.searchInput {
-    width: 100%;
+  span.input-group-addon {
+    cursor: pointer;
   }
   p.searchResults {
     line-height: 2em;

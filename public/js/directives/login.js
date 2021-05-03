@@ -1,8 +1,8 @@
-app.directive('login', function(){
+app.directive('login', ['loginService', function(loginService){
   return {
     restrict: 'E',
     scope: {},
-    templateUrl: './js/directives/login.html',
+    templateUrl: 'js/directives/login.html',
     link: function(scope, element, attrs) {
 
       scope.inline = false
@@ -11,23 +11,17 @@ app.directive('login', function(){
         scope.inline = true
       }      
   
-      scope.submit = () => {
+      scope.submit = () => { 
 
-        /*$http.get(`?user=${scope.user}&pass=${scope.pass}`) 
-        .success(function(data) { 
-          window.alert('successful login')
-        }) 
-        .error(function(err) { 
-          scope.userError = true			
-          scope.passError = true
-          scope.pass = null
-          scope.user = null
-        }); */
-
-        window.alert('successful login')
+        loginService(scope.user, scope.pass).then(function(response) {
+          console.log('logged in')
+          window.alert('successful login')  
+        }, function(response) {
+          console.log('something went wrong')
+        });
 
         login.reset()
       }
     }
   }
-})
+}])

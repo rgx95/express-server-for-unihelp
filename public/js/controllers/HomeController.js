@@ -1,20 +1,28 @@
-app.controller('HomeController', ['$scope', 'universita', 'corsi', 'esami', function($scope, universita, corsi, esami) {
+app.controller('HomeController', ['$scope', 'getData', function($scope, getData) {
+
+  $scope.next = [false, false, false]
+
+  $scope.resetSearch = () => {
+    $scope.next.fill(false);
+
+    $scope.reset = true
+  }
    
-  universita.then(function(response) {
+  getData('universita').then(function(response) {
     console.log(response.status)
     $scope.universita = response.data      
   }, function(response) {
     console.log(response.status)
   });
 
-  corsi.then(function(response) {
+  getData('corsi').then(function(response) {
     console.log(response.status)
     $scope.corsi = response.data      
   }, function(response) {
     console.log(response.status)
   });
 
-  esami.then(function(response) {
+  getData('esami').then(function(response) {
     console.log(response.status)
     $scope.esami = response.data      
   }, function(response) {
