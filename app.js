@@ -13,7 +13,7 @@ app.get('/universita', function(req, res, next) {
 
   /*let arr = new Array(15)
   arr.fill('Università di ')*/
-  let arr = ['universita di pisa', 'universita di firenze', 'universita di siena', 'universita di roma', 'universita di milano', 'universita di bologna', 'universita di torino', 'universita di napoli', 'universita di palermo']
+  let arr = ['Università di Pisa', 'Universita\' di Firenze', 'Universita\' di Siena', 'Universita\' di Roma', 'Universita\' di Milano', 'Universita\' di Bologna', 'Universita\' di Torino', 'Universita\' di Napoli', 'Universita\' di Palermo']
 
   res.json(arr)
 })

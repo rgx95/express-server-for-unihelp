@@ -19,8 +19,9 @@ app.directive('login', ['loginService', function(loginService){
         }, function(response) {
           console.log('something went wrong')
         });
-
-        login.reset()
+        
+        scope.user = ""
+        scope.pass = ""
       }
     }
   }
