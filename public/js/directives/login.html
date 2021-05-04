@@ -2,15 +2,15 @@
 
   <h2 ng-if="!inline">Login</h2>
   <br ng-if="!inline">
-  <input name="user" type="text" ng-model="user" placeholder="{{ userError ? 'utente errato' : 'nome utente'}}" ng-style="userErrorStyle" required>
+  <input name="user" class="form-control" type="text" ng-model="user" placeholder="{{ userError ? 'utente errato' : 'nome utente'}}" ng-style="userErrorStyle" required>
   <br ng-if="!inline">
   <br ng-if="!inline">
   
-  <input name="pass" type="password" ng-model="pass" placeholder="{{ passError ? 'password errata' : 'password'}}" ng-style="userErrorStyle" required>
+  <input name="pass" class="form-control" type="password" ng-model="pass" placeholder="{{ passError ? 'password errata' : 'password'}}" ng-style="userErrorStyle" required>
   <br ng-if="!inline">    
   <br ng-if="!inline">
 
-  <input name="submit" type="submit" ng-disabled="login.user.$invalid || login.pass.$invalid">
+  <input name="submit" class="btn btn-block btn-info" type="submit" ng-disabled="login.user.$invalid || login.pass.$invalid">
 
 </form>
 
@@ -28,6 +28,11 @@
   }
 
   form[name="login"]{
-    margin: 1em;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 480px;
   }
 </style>
