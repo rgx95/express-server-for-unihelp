@@ -1,22 +1,58 @@
+/******************************************************
+
+                    standard elements
+
+*******************************************************/
+
 body {
   background-image: url('../img/sfondo1.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  
+  /*height: 100%;
+  min-height: 100%;*/
+}
+
+fieldset {
+  box-shadow: 0 0 1px gray;
+  border-radius: 5px;
+  padding: 2em;
 }
 
 footer {
+  display: block;
+  padding: 1em;
   text-align: center;
-  padding: 2.5em;
   width: 100%;
   background: #333333;
-  color: white;
+  color: gray;
 }
+
+
+/******************************************************
+
+                  bootstrap classes
+
+*******************************************************/
+
 
 .container {
   background: white;
   padding: 2em;
   border-radius: 1em;
+}
+
+
+
+/******************************************************
+
+                    custom styles
+
+*******************************************************/
+
+div#ng-view {
+  min-height: 100%;
 }
 
 div.bg-view{
@@ -35,13 +71,6 @@ div.bg-view{
   font-weight: bolder;
 }
 
-
-fieldset {
-  box-shadow: 0 0 1px gray;
-  border-radius: 5px;
-  padding: 2em;
-}
-
 .img-chisiamo{
   border-radius: 100%;
   box-shadow: 0 0 10px black;
@@ -51,7 +80,6 @@ fieldset {
   height: 90%;
   margin: 5%;
 }
-
 
 img[class*="immagine-profilo"] {
   margin-top: -128px;
@@ -73,6 +101,15 @@ img[class*="immagine-profilo"] {
   transform: translateX(-50%);
 }
 
+
+
+/******************************************************
+
+                    media queries
+
+*******************************************************/
+
+
 @media screen and (max-width: 960px) {
   img[class*="immagine-profilo"] {
     display: block;
@@ -86,15 +123,19 @@ img[class*="immagine-profilo"] {
     position: relative;
     top: 0;
   } 
-
+  footer {    
+    color: #31708f; /* #31708f #d9edf7 */
+    border-top: 1px #bce8f1 solid;
+    background: none;    
+    margin: 0 2.5em 0 2.5em;
+    width: auto;
+    opacity: 0.5;
+  }
   
 }
 
 
 @media screen and (max-width: 768px) {
-  div.bg-view {
-    height: min-content;
-  }
   body {    
     background-image: none !important;
   }
