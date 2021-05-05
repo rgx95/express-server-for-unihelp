@@ -14,10 +14,11 @@
     
       <div class="cerca-uni-corso-esame-p-container" ng-show="universita.showResults"> 
           <p class="searchResults"
-            ng-click="setAndBlur('universita', el)"
+            ng-click="setAndBlur('universita', el.NOME)"
             ng-repeat="el in universita.data | filter: universita.searchString | limitTo: 4">
-            {{ el }}
+            {{ el.NOME }}
           </p>
+          <p class="searchResults" ng-if="universita.data.length > 4">...</p>
       </div>
     
   </div>
@@ -34,10 +35,11 @@
     
       <div class="cerca-uni-corso-esame-p-container" ng-show="corsi.showResults"> 
           <p class="searchResults"
-            ng-click="setAndBlur('corsi', el)"
+            ng-click="setAndBlur('corsi', el.NOME)"
             ng-repeat="el in corsi.data | filter: corsi.searchString | limitTo: 4">
-            {{ el }}
+            {{ el.NOME }}
           </p>
+          <p class="searchResults" ng-if="universita.data.length > 4">...</p>
       </div>
   
   </div>
@@ -54,10 +56,11 @@
     
       <div class="cerca-uni-corso-esame-p-container" ng-show="esami.showResults"> 
           <p class="searchResults"
-            ng-click="setAndBlur('esami', el)"
+            ng-click="setAndBlur('esami', el.NOME)"
             ng-repeat="el in esami.data | filter: esami.searchString | limitTo: 4">
-            {{ el }}
+            {{ el.NOME }}
           </p>
+          <p class="searchResults" ng-if="universita.data.length > 4">...</p>
       </div>
   
   </div>

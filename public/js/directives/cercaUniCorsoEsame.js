@@ -30,14 +30,15 @@ app.directive('cercaUniCorsoEsame', ['getData', function(getData) {
 
       getData('universita').then(function(response) {
         console.log(response.status)
-        scope.universita.data = response.data 
+        scope.universita.data = response.data        
+        console.log(scope.universita.data)
       }, function(response) {
         console.log(response.status)
       });
     
       getData('corsi').then(function(response) {
         console.log(response.status)
-        scope.corsi.data = response.data      
+        scope.corsi.data = response.data       
       }, function(response) {
         console.log(response.status)
       });
