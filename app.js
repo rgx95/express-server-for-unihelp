@@ -1,64 +1,41 @@
+//
+// requires
+//
 const express = require('express')
-const morgan = require('morgan');
+const morgan = require('morgan')
+// routers
+const cercaRouter = require('./routers/cercaRouter')
+
+
+
+// app
 const app = express()
-
+// port
 const PORT = process.env.PORT || 4001;
-
+// log
 app.use(morgan('dev'));
+// declaring static folder
 app.use(express.static('public'));
 
 
-const sqlite3 = require('sqlite3')
 
-const connessioneDataBase = {
-  db: null,
-  apri: function() {
-    this.db = new sqlite3.Database('./db/db.db', (err) => {if(err!==null) {console.log(err)} else {console.log('db opened')} })
-  },
-  chiudi: function() {
-    this.db.close((err) => { if(err!==null) {console.log(err)} else {console.log('db closed')} })
-  }
-}
+//
+// routers
+//
+app.use('/', cercaRouter)
 
 
-app.get('/universita', function(req, res, next) {  
-  connessioneDataBase.apri()
-  let db = connessioneDataBase.db
 
-  db.all("SELECT * FROM UNIVERSITA", function(err, all) {  
-    res.json(all)
-  });      
-
-  connessioneDataBase.chiudi()
-})
-
-app.get('/corsi', function(req, res, next) {
-  connessioneDataBase.apri()
-  let db = connessioneDataBase.db
-
-  db.all("SELECT * FROM CORSO", function(err, all) {  
-    res.json(all)
-  });      
-
-  connessioneDataBase.chiudi()
-})
-
-app.get('/esami', function(req, res, next) {
-  connessioneDataBase.apri()
-  let db = connessioneDataBase.db
-
-  db.all("SELECT * FROM ESAME", function(err, all) {  
-    res.json(all)
-  });      
-
-  connessioneDataBase.chiudi()
-})
-
+// login
 app.get('/login', function(req, res, next) {
   res.send()
 })
 
 
+
+//
+// starting server listening
+//
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
