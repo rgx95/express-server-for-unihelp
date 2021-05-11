@@ -14,7 +14,7 @@
     
       <div class="cerca-uni-corso-esame-p-container" ng-show="universita.showResults"> 
           <p class="searchResults"
-            ng-click="setAndBlur('universita', el.NOME)"
+            ng-click="setAndBlurUniversita(el.ID, el.NOME)"
             ng-repeat="el in universita.data | filter: universita.searchString | limitTo: 4">
             {{ el.NOME }}
           </p>
@@ -22,6 +22,8 @@
       </div>
     
   </div>
+
+  <!-- corso --
   <div class="cerca-uni-corso-esame">  
 
       <input type="text"
@@ -43,6 +45,8 @@
       </div>
   
   </div>
+
+  !-- esame-->
   <div class="cerca-uni-corso-esame">   
 
       <input type="text"
@@ -50,13 +54,13 @@
         ng-model="esami.searchString"
         ng-focus="focusSearch('esami')"
         onFocus="this.select()"
-        ng-disabled="!(corsi.filled && !esami.filled)"
+        ng-disabled="!(universita.filled && !esami.filled)"
         placeholder="{{esami.placeholder}}"
         style="width: 100%;">
     
       <div class="cerca-uni-corso-esame-p-container" ng-show="esami.showResults"> 
           <p class="searchResults"
-            ng-click="setAndBlur('esami', el.NOME)"
+            ng-click="setAndBlurEsame(el.ID, el.NOME)"
             ng-repeat="el in esami.data | filter: esami.searchString | limitTo: 4">
             {{ el.NOME }}
           </p>
@@ -82,7 +86,7 @@
 <style>
   @media screen and (min-width: 601px) {
     div.cerca-uni-corso-esame {
-      width: 33.33%;
+      width: 50%;
     }
   } @media screen and (max-width: 600px) {
     div.cerca-uni-corso-esame {
