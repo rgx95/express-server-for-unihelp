@@ -10,8 +10,7 @@
         ng-blur="blurSearch('universita')"
         onFocus="this.select()"
         ng-disabled="universita.filled"
-        placeholder="{{universita.placeholder}}"
-        style="width: 100%;">
+        placeholder="{{universita.placeholder}}">
     
       <div class="cerca-uni-corso-esame-p-container" ng-show="universita.showResults"> 
           <p class="searchResults"
@@ -20,6 +19,7 @@
             {{ el.NOME }}
           </p>
           <p class="searchResults others" ng-if="universita.data.length > 4">...</p>
+          <p class="searchResults others" ng-if="universita.data.length == 0">Nessun risultato</p>
       </div>
 
       <br>
@@ -36,16 +36,16 @@
         ng-blur="blurSearch('esami')"
         onFocus="this.select()"
         ng-disabled="!(universita.filled && !esami.filled)"
-        placeholder="{{esami.placeholder}}"
-        style="width: 100%;">
+        placeholder="{{esami.placeholder}}">
     
-      <div class="cerca-uni-corso-esame-p-container" ng-show="esami.showResults && esami.data.length"> 
+      <div class="cerca-uni-corso-esame-p-container" ng-show="esami.showResults"> 
           <p class="searchResults"
             ng-click="setAndBlurEsame(el.ID, el.NOME)"
             ng-repeat="el in esami.data | filter: esami.searchString | limitTo: 4">
             {{ el.NOME }} ({{ el.CODICE || '00000' }})
           </p>
           <p class="searchResults others" ng-if="esami.data.length > 4">...</p>
+          <p class="searchResults others" ng-if="esami.data.length == 0">Nessun risultato</p>
       </div>
       
       <br><br><br>
@@ -86,9 +86,7 @@
     line-height: 2em;
     margin: 0 2em 0 0;
     width: 100%;
-    /*border: 1px black solid;*/
-    border-top: 0px;
-    
+    border-top: 0px;    
     padding: 0 0.5em 0 0.5em;
   } p.searchResults:hover {
     cursor: pointer;
