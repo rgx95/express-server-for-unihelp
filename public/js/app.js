@@ -51,7 +51,7 @@ app.config(function ($routeProvider) {
     templateUrl: 'views/login.html'
   })
   .when('/profilo', {
-    controller: 'ProfiloController',
+    controller: 'voidController',
     templateUrl: 'views/profilo.html'
   })
   .when('/recensione', {

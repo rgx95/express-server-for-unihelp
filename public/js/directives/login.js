@@ -1,4 +1,4 @@
-app.directive('login', ['loginService', function(loginService){
+app.directive('login', ['loginService', '$location', function(loginService, $location){
   return {
     restrict: 'E',
     scope: {},
@@ -14,10 +14,14 @@ app.directive('login', ['loginService', function(loginService){
       scope.submit = () => { 
 
         loginService(scope.user, scope.pass).then(function(response) {
-          console.log('logged in')
-          window.alert('successful login')  
-        }, function(response) {
-          console.log('something went wrong')
+          if (response.data.code == 200) {
+            console.log(response.data)
+            $location.url('profilo')
+          } else {
+            scope.errorMessage = response.data.message
+          }
+        }, function(response) { 
+          console.log(response)
         });
         
         scope.user = ""

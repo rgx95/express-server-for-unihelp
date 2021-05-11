@@ -4,14 +4,16 @@
   <br ng-if="!inline">
   <input name="user" class="form-control" type="text" ng-model="user" placeholder="{{ userError ? 'utente errato' : 'nome utente'}}" ng-style="userErrorStyle" required>
   <br ng-if="!inline">
-  <br ng-if="!inline">
   
   <input name="pass" class="form-control" type="password" ng-model="pass" placeholder="{{ passError ? 'password errata' : 'password'}}" ng-style="userErrorStyle" required>
   <br ng-if="!inline">    
-  <br ng-if="!inline">
+  <br ng-if="!inline && !errorMessage">
 
+  <div class="alert alert-info" ng-if="errorMessage">
+    <strong>Attenzione!</strong> {{ errorMessage }}
+  </div>
   <input name="submit" class="btn btn-block btn-info" type="submit" ng-disabled="login.user.$invalid || login.pass.$invalid">
-
+  
 </form>
 
 <style>

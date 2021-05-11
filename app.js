@@ -5,6 +5,7 @@ const express = require('express')
 const morgan = require('morgan')
 // routers
 const cercaRouter = require('./routers/cercaRouter')
+const accountRouter = require('./routers/accountRouter')
 
 
 
@@ -23,13 +24,7 @@ app.use(express.static('public'));
 // routers
 //
 app.use('/', cercaRouter)
-
-
-
-// login
-app.get('/login', function(req, res, next) {
-  res.send()
-})
+app.use('/', accountRouter)
 
 
 
