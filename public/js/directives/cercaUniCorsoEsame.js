@@ -1,4 +1,4 @@
-app.directive('cercaUniCorsoEsame', ['getData', function(getData) {
+app.directive('cercaUniCorsoEsame', ['getData', '$timeout', function(getData, $timeout) {
   return {
     restrict: 'E',
     scope: {},
@@ -6,22 +6,25 @@ app.directive('cercaUniCorsoEsame', ['getData', function(getData) {
     link: function(scope, element, attrs) {
 
       scope.universita = {placeholder: 'Cerca Università...', filled: false}
-      //scope.corsi = {placeholder: 'Cerca Corso di Laurea...', filled: false}
       scope.esami = {placeholder: 'Cerca Esame...', filled: false}
 
       scope.setAndBlurUniversita = (id, val) => {
-        scope['universita'].searchId = id
-        scope['universita'].searchString = val
-        scope['universita'].showResults = false
-        scope['universita'].filled = true
+        scope.universita.searchId = id
+        scope.universita.searchString = val
+        scope.universita.showResults = false
+        scope.universita.filled = true
         caricaEsami(id)
       }
 
+      scope.blurSearch = (x) => {
+        $timeout(()=>{scope[x].showResults = false}, 300)        
+      }
+
       scope.setAndBlurEsame = (id, val) => {
-        scope['esame'].searchId = id
-        scope['esame'].searchString = val
-        scope['esame'].showResults = false
-        scope['esame'].filled = true
+        scope.esami.searchId = id
+        scope.esami.searchString = val
+        scope.esami.showResults = false
+        scope.esami.filled = true
       }
 
       scope.focusSearch = (x) => {
@@ -30,10 +33,8 @@ app.directive('cercaUniCorsoEsame', ['getData', function(getData) {
 
       scope.resetSearch = () => {
         scope.universita.searchString = ""
-        //scope.corsi.searchString = ""
         scope.esami.searchString = ""
         scope.universita.filled = false
-        //scope.corsi.filled = false
         scope.esami.filled = false
       }
 
@@ -44,13 +45,6 @@ app.directive('cercaUniCorsoEsame', ['getData', function(getData) {
       }, function(response) {
         console.log(response.status)
       });
-    
-      /*getData('corsi').then(function(response) {
-        console.log(response.status)
-        scope.corsi.data = response.data       
-      }, function(response) {
-        console.log(response.status)
-      });*/
 
       function caricaEsami(uniId) {    
         getData(`universita/${uniId}/esami`).then(function(response) {
@@ -61,9 +55,9 @@ app.directive('cercaUniCorsoEsame', ['getData', function(getData) {
         });
       }
 
+      // test
       scope.submitCerca = () => {
         let tmp = 'Ricerca:\n' + scope.universita.searchString
-        //tmp += '\n' + scope.corsi.searchString
         tmp += '\n' + scope.esami.searchString
         window.alert(tmp)
       }

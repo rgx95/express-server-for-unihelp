@@ -109,11 +109,10 @@ cercaRouter.get('/universita/:uniId/esami', (req, res, next) => {
   connessioneDataBase.apri()
   let db = connessioneDataBase.db
 
-  db.all(`SELECT ESAMI.ID, ESAMI.NOME, ESAMI.CODICE FROM UNIVERSITA
-  LEFT JOIN FACOLTA ON UNIVERSITA.ID = FACOLTA.UNIVERSITA 
-  LEFT JOIN CORSI ON FACOLTA.ID=CORSI.FACOLTA
-  LEFT JOIN ESAMI ON CORSI.FACOLTA=ESAMI.CORSO
-  WHERE UNIVERSITA.ID=${req.params.uniId}`, function(err, all) {  
+  db.all(`SELECT ESAMI.ID, ESAMI.NOME, ESAMI.CODICE FROM ESAMI 
+  LEFT JOIN CORSI ON ESAMI.CORSO=CORSI.ID
+  LEFT JOIN FACOLTA ON CORSI.FACOLTA=FACOLTA.ID
+  WHERE FACOLTA.UNIVERSITA=${req.params.uniId}`, function(err, all) {  
     if (err) res.status(500).send(err)
     res.json(all)
   });      
