@@ -11,7 +11,8 @@ app.directive('login', ['loginService', 'sessExists', '$location', function(logi
             console.log(response.data)            
             scope.logged = response.data.logged
             scope.loggedUser = response.data.user
-            //$location.url('profilo')
+            
+            location.href = '#!/profilo'; location.reload()
           } else {
             scope.errorMessage = response.data.message
           }
