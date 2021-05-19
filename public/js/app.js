@@ -1,5 +1,20 @@
 var app = angular.module('app', ["ui.router"])
 
+app.controller('main', ['$scope', 'sessExists', function($scope, sessExists) {
+  sessExists.then(function(response){
+    if (response.status === 200) {
+      console.log(response.status)
+      $scope.user = response.data.user.USERNAME
+    }
+  }, function(reason){
+    if (reason) {
+      console.log(reason)
+    }
+  })
+}])
+
+
+
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
       
   // For any unmatched url, send to /home
@@ -34,58 +49,3 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       controller: "ProfiloController"
     })
 }]);
-
-
-
-/*
-app.config(function ($routeProvider) {
-  $routeProvider
-
-  .when('/aggiungiEsame', {
-    controller: 'voidController',
-    templateUrl: '/views/aggiungiEsame.html'
-  })
-  
-  .when('/cambioPassword', {
-    controller: 'voidController',
-    templateUrl: 'views/cambioPassword.html'
-  })
-  
-  .when('/confermaCorso', {
-    controller: 'voidController',
-    templateUrl: 'views/confermaCorso.html'
-  })
-  .when('/confermaEsame', {
-    controller: 'voidController',
-    templateUrl: 'views/confermaEsame.html'
-  })
-  .when('/confermaLogin', {
-    controller: 'voidController',
-    templateUrl: 'views/confermaLogin.html'
-  })
-  .when('/confermaRegistra', {
-    controller: 'voidController',
-    templateUrl: 'views/confermaRegistra.html'
-  })
-  .when('/corso', {
-    controller: 'voidController',
-    templateUrl: 'views/corso.html'
-  })
-  
-  
-  
-  
-  .when('/recensione', {
-    controller: 'RecensioneController',
-    templateUrl: 'views/recensione.html'
-  })
-  .when('/registra', {
-    controller: 'RegistraController',
-    templateUrl: 'views/registra.html'
-  })
-  .when('/ricerca', {
-    controller: 'RicercaController',
-    templateUrl: 'views/ricerca.html'
-  })
-  
-})*/

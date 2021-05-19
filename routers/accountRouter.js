@@ -51,7 +51,7 @@ accountRouter.get('/login', (req, res, next) => {
 })
 
 accountRouter.get('/sessExists', (req, res, next) => {
-  if (req.session) {
+  if (req.session.user) {
     res.json(req.session)
   } else {
     res.status(404).send()

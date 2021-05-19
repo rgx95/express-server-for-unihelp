@@ -1,5 +1,6 @@
 <form name="login" ng-submit="submit()" ng-show="!session">
 
+  <br><br>
   <h2>Login</h2>
   <br>
   <input name="user" class="form-control" type="text" ng-model="user" placeholder="{{ userError ? 'utente errato' : 'nome utente'}}" ng-style="userErrorStyle" required>
@@ -15,6 +16,9 @@
   <input name="submit" class="btn btn-block btn-info" type="submit" ng-disabled="login.user.$invalid || login.pass.$invalid">
   
 </form>
+
+<br ng-show="session || logged"><br ng-show="session || logged">
+<br ng-show="session || logged"><br ng-show="session || logged">
 
 <div class="alert alert-success" ng-show="session || logged">
   Login effettuato come <strong>{{ session.USERNAME || loggedUser.USERNAME }}</strong>
