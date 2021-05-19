@@ -1,27 +1,56 @@
-var app = angular.module('app', ['ngRoute'])
+var app = angular.module('app', ["ui.router"])
 
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+      
+  // For any unmatched url, send to /home
+  $urlRouterProvider.otherwise("/home")
+  
+  $stateProvider
+    .state('home', {
+        url: "/home",
+        templateUrl: "./views/home.html",
+        controller: "HomeController"
+    })
+    .state('esame', {
+        url: "/esame",
+        templateUrl: "views/esame.html"
+    })      
+    .state('chiSiamo', {
+        url: "/chiSiamo",
+        templateUrl: "views/chiSiamo.html"
+    })
+    .state('assistenza', {
+      url: "/assistenza",
+      templateUrl: "views/assistenza.html"
+    })
+    .state('login', {
+      url: "/login",
+      templateUrl: "views/login.html",
+      controller: "LoginController"
+    })
+    .state('profilo', {
+      url: "/profilo",
+      templateUrl: "views/profilo.html",
+      controller: "ProfiloController"
+    })
+}]);
+
+
+
+/*
 app.config(function ($routeProvider) {
   $routeProvider
-  .when('/', {
-    controller: 'HomeController',
-    templateUrl: './views/home.html'
-  })  
+
   .when('/aggiungiEsame', {
     controller: 'voidController',
     templateUrl: '/views/aggiungiEsame.html'
   })
-  .when('/assistenza', {
-    controller: 'voidController',
-    templateUrl: 'views/assistenza.html'
-  })
+  
   .when('/cambioPassword', {
     controller: 'voidController',
     templateUrl: 'views/cambioPassword.html'
   })
-  .when('/chiSiamo', {
-    controller: 'voidController',
-    templateUrl: 'views/chiSiamo.html'
-  })
+  
   .when('/confermaCorso', {
     controller: 'voidController',
     templateUrl: 'views/confermaCorso.html'
@@ -42,18 +71,10 @@ app.config(function ($routeProvider) {
     controller: 'voidController',
     templateUrl: 'views/corso.html'
   })
-  .when('/esame', {
-    controller: 'voidController',
-    templateUrl: 'views/esame.html'
-  })
-  .when('/login', {
-    controller: 'LoginController',
-    templateUrl: 'views/login.html'
-  })
-  .when('/profilo', {   
-    controller: 'ProfiloController',
-    templateUrl: 'views/profilo.html'
-  })
+  
+  
+  
+  
   .when('/recensione', {
     controller: 'RecensioneController',
     templateUrl: 'views/recensione.html'
@@ -66,7 +87,5 @@ app.config(function ($routeProvider) {
     controller: 'RicercaController',
     templateUrl: 'views/ricerca.html'
   })
-  .otherwise({
-    redirectTo: '/'
-  })
-})
+  
+})*/

@@ -38,14 +38,14 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">          
         <ul class="nav navbar-nav">
-          <li><a href="#!index">Home</a></li>
-          <li><a href="#!esame">Esami</a></li>
-          <li><a href="#!chiSiamo">Chi Siamo</a></li>
-          <li><a href="#!assistenza">Assistenza</a></li>
-          <li><a href="#!profilo">Profilo</a></li>
+          <li><a ui-sref="home">Home</a></li>
+          <li><a ui-sref="esame">Esami</a></li>
+          <li><a ui-sref="chiSiamo">Chi Siamo</a></li>
+          <li><a ui-sref="assistenza">Assistenza</a></li>
+          <li><a ui-sref="profilo" onclick="location.href='#!/profilo'; location.reload()">Profilo</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#!login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
       </div>
     </div>
@@ -61,7 +61,7 @@
 
   
   
-  <div ng-view></div>  
+  <ui-view></ui-view>
 
   <div class="bg-view"></div>
 
@@ -89,7 +89,7 @@
 
   <!-- angular libraries -->
   <script src="js/vendor/angular.min.js"></script>
-  <script src="js/vendor/angular-route.min.js"></script>
+  <script src="js/vendor/angular-ui-router.min.js"></script>
 
   <!-- app -->
   <script src="js/app.js"></script>

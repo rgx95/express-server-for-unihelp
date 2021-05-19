@@ -1,4 +1,4 @@
-app.controller('ProfiloController', ['$scope', 'sessExists', function($scope, sessExists) {
+app.controller('ProfiloController', function($scope, sessExists) {  
   
   sessExists.then(function(response){
     if (response.status === 200) {
@@ -22,8 +22,6 @@ app.controller('ProfiloController', ['$scope', 'sessExists', function($scope, se
       $scope.cognome = userObject.COGNOME || 'xxxxx'    
       $scope.punti = userObject.PUNTI || 11    
       $scope.matricola = userObject.MATRICOLA || '000000'
-
-      console.log($scope)
     }
 
   }, function(reason){
@@ -32,4 +30,4 @@ app.controller('ProfiloController', ['$scope', 'sessExists', function($scope, se
     }
   })
 
-}])
+})
