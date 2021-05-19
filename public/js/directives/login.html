@@ -1,4 +1,4 @@
-<form name="login" ng-submit="submit()" ng-show="!logged">
+<form name="login" ng-submit="submit()" ng-show="!session">
 
   <h2>Login</h2>
   <br>
@@ -16,8 +16,8 @@
   
 </form>
 
-<div class="alert alert-success" ng-show="logged">
-  Login effettuato come <strong>{{ loggedUser.USERNAME }}</strong>
+<div class="alert alert-success" ng-show="session || logged">
+  Login effettuato come <strong>{{ session.USERNAME || loggedUser.USERNAME }}</strong>
 </div>
 
 <style>
