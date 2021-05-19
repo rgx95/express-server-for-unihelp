@@ -3,11 +3,11 @@
   </div>   
 
 
-<div class="container" style="padding: 0 10vw 0 10vw;">
+<div class="container" style="padding: 0 10vw 0 10vw;" ng-show="true || userId">
     <!-- image -->
     <div style="position: relative;">
         <img src="../img/blank-profile.png" class="immagine-profilo centra">
-        <button type="button" class="btn btn-info centra punteggio-profilo">Punti <span class="badge">99+</span></button>
+        <button type="button" class="btn btn-info centra punteggio-profilo">Punti <span class="badge">{{ punti }} {{ punti >= 0 ? '+' : '-' }}</span></button>
     </div>
 
     <br><br>
@@ -18,29 +18,40 @@
     <div>
 
         <fieldset>
-        <h4 class="titolo">Nickname</h4>
-        <p class="testo">Littleflower</p>
+        <p>Nome utente </p>
+        <h4>{{ user }}</h4>
         <br>
-        <h4 class="titolo">Email: </h4>
-        <p class="testo" id="email">carolo@email</p>
+        <p>Email </p>
+        <h4>{{ mail }}</h4>
         <br>
-        <h4 class="titolo">Nome: </h4>
-        <p class="testo">Carlo</p>
+        <p>Password </p>
+        <input class="form-control" type="password" ng-model="pass">
+        </fieldset>
+        
         <br>
-        <h4 class="titolo">Cognome: </h4>
-        <p class="testo">Fiorino</p>        
-        <br>        
+
+        <fieldset>
+        <p>Nome </p>
+        <h4>{{ nome }}</h4>
+        <br>
+        <p>Cognome </p>
+        <h4>{{ cognome }}</h4>       
         </fieldset>
 
         <br>
 
         <fieldset>
-        <h4 class="titolo">Università: </h4>
-        <p class="testo">Università di Pisa</p>
+        <p>Università </p>
+        <h4>{{ uni }}</h4>
         <br>
-        <h4 class="titolo">Matricola: </h4>
-        <p class="testo">123456</p>
+        <p>Facoltà </p>
+        <h4>{{ fac }}</h4>
         <br>
+        <p>Corso di Laurea </p>
+        <h4>{{ corso }}</h4>
+        <br>
+        <p>Matricola </p>
+        <h4>{{ matricola }}</h4>
         </fieldset> 
 
         

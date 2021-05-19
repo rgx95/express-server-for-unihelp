@@ -1,22 +1,17 @@
-app.directive('login', ['loginService', '$location', function(loginService, $location){
+app.directive('login', ['loginService', 'sessExists', '$location', function(loginService, sessExists, $location){
   return {
     restrict: 'E',
     scope: {},
     templateUrl: 'js/directives/login.html',
-    link: function(scope, element, attrs) {
-
-      scope.inline = false
-      
-      if("inline" in attrs) {
-        scope.inline = true
-      }      
-  
+    link: function(scope, element, attrs) {  
       scope.submit = () => { 
 
         loginService(scope.user, scope.pass).then(function(response) {
           if (response.data.code == 200) {
-            console.log(response.data)
-            $location.url('profilo')
+            console.log(response.data)            
+            scope.logged = response.data.logged
+            scope.loggedUser = response.data.user
+            //$location.url('profilo')
           } else {
             scope.errorMessage = response.data.message
           }

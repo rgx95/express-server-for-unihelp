@@ -20,6 +20,20 @@ app.use(express.static('public'));
 
 
 
+// session
+const session = require('express-session')
+// crypto
+const crypto = require('crypto') // crypto.randomBytes(20).toString('hex')
+
+app.use(session({
+  secret: crypto.randomBytes(20).toString('hex'),
+  resave: false,
+  saveUninitialized: true,
+  cookie: {maxAge: 60000}
+}))
+
+
+
 //
 // routers
 //

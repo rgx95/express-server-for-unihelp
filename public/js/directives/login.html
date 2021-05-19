@@ -1,20 +1,24 @@
-<form name="login" ng-submit="submit()">
+<form name="login" ng-submit="submit()" ng-show="!logged">
 
-  <h2 ng-if="!inline">Login</h2>
-  <br ng-if="!inline">
+  <h2>Login</h2>
+  <br>
   <input name="user" class="form-control" type="text" ng-model="user" placeholder="{{ userError ? 'utente errato' : 'nome utente'}}" ng-style="userErrorStyle" required>
-  <br ng-if="!inline">
+  <br>
   
   <input name="pass" class="form-control" type="password" ng-model="pass" placeholder="{{ passError ? 'password errata' : 'password'}}" ng-style="userErrorStyle" required>
-  <br ng-if="!inline">    
-  <br ng-if="!inline && !errorMessage">
+  <br>    
+  <br ng-if="!errorMessage">
 
   <div class="alert alert-info" ng-if="errorMessage">
-    <strong>Attenzione!</strong> {{ errorMessage }}
+    <strong>Attenzione! </strong> {{ errorMessage }}
   </div>
   <input name="submit" class="btn btn-block btn-info" type="submit" ng-disabled="login.user.$invalid || login.pass.$invalid">
   
 </form>
+
+<div class="alert alert-success" ng-show="logged">
+  Login effettuato come <strong>{{ loggedUser.USERNAME }}</strong>
+</div>
 
 <style>
   /*
