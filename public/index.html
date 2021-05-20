@@ -42,11 +42,11 @@
           <li><a ui-sref="esame">Esami</a></li>
           <li><a ui-sref="chiSiamo">Chi Siamo</a></li>
           <li><a ui-sref="assistenza">Assistenza</a></li>
-          <li><a ui-sref="profilo" onclick="location.href='#!/profilo'; location.reload()">Profilo</a></li>
+          <li><a ui-sref="profilo" >Profilo</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li ng-if="!user"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          <li ng-if="user"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          <li ng-if="user"><a href="" ng-click="sessDestroy()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
       </div>
     </div>

@@ -58,6 +58,25 @@ accountRouter.get('/sessExists', (req, res, next) => {
   }
 })
 
+accountRouter.get('/sessDestroy', (req, res, next) => {
+  if (req.session.user) {
+    req.session.destroy(function(err) {
+      // cannot access session here
+      if (err ==  null) {
+        console.log('session destroyed')
+        res.send()
+      }
+      else
+      {
+        console.log(err)
+        res.status(500).send()
+      }
+    })
+  } else {
+    res.status(404).send()
+  }
+})
+
 
 
 module.exports = accountRouter
