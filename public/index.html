@@ -42,7 +42,13 @@
           <li><a ui-sref="esame">Esami</a></li>
           <li><a ui-sref="chiSiamo">Chi Siamo</a></li>
           <li><a ui-sref="assistenza">Assistenza</a></li>
-          <li><a ui-sref="profilo" >Profilo</a></li>
+          <li>
+            <a ui-sref="profilo"
+              class="red-tooltip"
+              data-toggle="tooltip"
+              data-placement="auto"
+              title="{{ !user ? 'Prima accedi!' : '' }}">Profilo</a>
+          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li ng-if="!user"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -87,6 +93,13 @@
                                 J S - S C R I P Ts 
   
   ----------------------------------------------------------------------------->
+
+  <!-- enabling all tooltips -->
+  <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
 
   <!-- angular libraries -->
   <script src="js/vendor/angular.min.js"></script>
