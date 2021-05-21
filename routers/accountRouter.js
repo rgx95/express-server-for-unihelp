@@ -2,6 +2,7 @@ const express = require('express')
 const accountRouter = express.Router()
 // db
 const connessioneDataBase = require('../scripts/connessioneDataBase')
+const validation = require('../scripts/validation')
 
 
 
@@ -33,10 +34,9 @@ accountRouter.get('/login', (req, res, next) => {
         if (!row.ATTIVO) {          
           res.send({logged: false, message: 'Account non ancora attivato, controlla l\'email!', code: 403})
         } else {
-          console.log('successful login')
           req.session.user = new Object()
-          Object.assign(req.session.user, row)
-          console.log(req.session.user)
+          Object.assign(req.session.user, row)          
+          console.log(`${req.session.user.USERNAME} successfully logged in`)
           res.json({logged: true, message: 'Accesso effettuato', code: 200})
         }
 
@@ -74,6 +74,30 @@ accountRouter.get('/sessDestroy', (req, res, next) => {
     })
   } else {
     res.status(404).send()
+  }
+})
+
+accountRouter.put('/update', (req, res, next) => {
+  if (!req.session.user || !validation.validaModifica(req.query.field, req.query.value)) {
+    res.status(400).send()
+  } else {
+
+    connessioneDataBase.apri()
+    let db = connessioneDataBase.db
+
+    db.run(`UPDATE UTENTI SET ${req.query.field.toUpperCase()} = ? WHERE ID = ?`, [req.query.value, req.session.user.ID], function(err) {
+      if (err) {
+        console.log(err)
+        res.status(500).send()
+      } else {
+        console.log(`Row(s) updated: ${this.changes}`);
+        req.session.user[req.query.field.toUpperCase()] = req.query.value
+        res.json(req.session)
+      }
+    })
+
+    connessioneDataBase.chiudi()
+
   }
 })
 
