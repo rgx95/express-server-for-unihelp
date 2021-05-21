@@ -85,13 +85,22 @@ accountRouter.put('/update', (req, res, next) => {
     connessioneDataBase.apri()
     let db = connessioneDataBase.db
 
-    db.run(`UPDATE UTENTI SET ${req.query.field.toUpperCase()} = ? WHERE ID = ?`, [req.query.value, req.session.user.ID], function(err) {
+    let field = req.query.field
+    if (field == 'mail') {
+      field = "ATTIVO = 0, MAIL"
+    } else {
+      field=field.toUpperCase()
+    }
+
+    db.run(`UPDATE UTENTI SET ${field} = ? WHERE ID = ?`, [req.query.value, req.session.user.ID], function(err) {
       if (err) {
         console.log(err)
         res.status(500).send()
       } else {
-        console.log(`Row(s) updated: ${this.changes}`);
+        console.log(`Row(s) updated: ${this.changes}`)
+        
         req.session.user[req.query.field.toUpperCase()] = req.query.value
+
         res.json(req.session)
       }
     })
