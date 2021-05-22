@@ -25,10 +25,11 @@
   <div ng-show="user">
 
     <fieldset>
-      <campo-modificabile field-name="username" field-value="{{user}}"></campo-modificabile>    
-      <br><br>
+      <p>Nome utente </p>
+      <h4>{{ user }}</h4> 
+      <br>
       <campo-modificabile field-name="mail" field-value="{{mail}}" field-type="email"></campo-modificabile>
-      <br><br>
+      <br>
       <campo-modificabile field-name="password" field-value="{{pass}}" field-type="password"></campo-modificabile>
     </fieldset>
     
@@ -36,7 +37,7 @@
 
     <fieldset>
       <campo-modificabile field-name="nome" field-value="{{nome}}"></campo-modificabile>
-      <br><br>
+      <br>
       <campo-modificabile field-name="cognome" field-value="{{cognome}}"></campo-modificabile>      
     </fieldset>
 
@@ -44,7 +45,7 @@
 
     <fieldset>
       <legend style="text-align: right; border: 0;">
-        <button>Modifica</button>
+        <button class="btn btn-info">Modifica</button>
       </legend>
       <p>Università </p>
       <h4>{{ uni }}</h4>
@@ -54,10 +55,21 @@
       <br>
       <p>Corso di Laurea </p>
       <h4>{{ corso }}</h4>
-      <br><br>
+      <br>
       <campo-modificabile field-name="matricola" field-value="{{matricola}}"></campo-modificabile>
     </fieldset> 
 
+    <br>
+
+    <fieldset>
+      <br>
+      <div class="alert alert-danger">
+        <b>Attenzione!</b> 
+        Cliccando sul pulsante qui in basso eliminerai definitivamente il tuo account
+        <br><br>
+        <button class="btn btn-block btn-danger">Elimina Account</button>
+      </div> 
+    </fieldset>
       
   </div>
   <br>
