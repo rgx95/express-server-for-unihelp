@@ -6,7 +6,7 @@
   </div>
 </h4>
 <input ng-model="fieldValue" ng-disabled="!editModeFlag" type="{{ fieldType || 'text' }}">
-<button ng-click="editMode()">{{ editMode ? 'Modifica' : 'Conferma' }}</button>
+<button ng-click="editMode()" ng-disabled="editModeFlag && fieldValue==copyValue">{{ !editModeFlag ? 'Modifica' : 'Conferma' }}</button>
 <button ng-if="editModeFlag" ng-click="annullaEditMode()">Annulla</button>
 <br>
 <span ng-if="fieldType=='password'&&editModeFlag" style="color: lightblue;">{{fieldValue}}</span>
