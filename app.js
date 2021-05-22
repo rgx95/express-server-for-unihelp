@@ -29,7 +29,7 @@ app.use(session({
   secret: crypto.randomBytes(20).toString('hex'),
   resave: false,
   saveUninitialized: true,
-  cookie: {maxAge: 60000}
+  cookie: {maxAge: 300000}
 }))
 
 

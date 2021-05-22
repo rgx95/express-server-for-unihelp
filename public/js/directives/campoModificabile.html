@@ -1,0 +1,12 @@
+<h4 style="text-transform: capitalize;">{{ fieldName }} 
+  <div class="alert alert-info" ng-if="editModeFlag && fieldType" style="font-size: small; padding: 1em; text-transform: none;">
+    <strong>Attenzione!</strong> 
+    {{ (fieldType == 'password') ? 'Da 8 a 15 caratteri, deve contenere almeno una minuscola, una maiuscola, un numero ed un carattere speciale' : '' }}
+    {{ (fieldType == 'email') ? 'Se modifichi l\'email dovrai procedere a confermare il nuovo indirizzo prima di poter accedere di nuovo' : '' }}
+  </div>
+</h4>
+<input ng-model="fieldValue" ng-disabled="!editModeFlag" type="{{ fieldType || 'text' }}">
+<button ng-click="editMode()">{{ editMode ? 'Modifica' : 'Conferma' }}</button>
+<button ng-if="editModeFlag" ng-click="annullaEditMode()">Annulla</button>
+<br>
+<span ng-if="fieldType=='password'&&editModeFlag" style="color: lightblue;">{{fieldValue}}</span>
