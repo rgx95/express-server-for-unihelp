@@ -1,0 +1,59 @@
+
+
+<form style="position: relative;">
+  <div class="input-group">
+    <input type="text"
+      class="form-control"
+      ng-model="object.searchString"
+      ng-focus="focusSearch()"
+      ng-blur="blurSearch()"
+      onFocus="this.select()"
+      ng-disabled="disabled"
+      placeholder="{{ placeholder || 'Cerca...' }}">
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit" ng-click="symbol == 'trash' ? resetSearch() : void()">
+        <i class="glyphicon glyphicon-{{ symbol || 'search'}}"></i>
+        <!-- acceptable values for symbol 'menu-right', 'trash' -->
+      </button>
+    </div>    
+  </div>
+
+  <div class="container-suggerimenti" ng-show="object.showResults && !attendiRisultati"> 
+    <p class="risultati-suggerimenti"
+      ng-click="setAndBlur(el.ID, el.NOME)"
+      ng-repeat="el in object.data | filter: object.searchString | limitTo: 4">
+      {{ el.NOME }}
+    </p>
+    <p class="risultati-suggerimenti altri" ng-if="object.data.length > 4">...</p>
+    <p class="risultati-suggerimenti altri" ng-if="object.data.length == 0">Nessun risultato</p>
+    <p class="risultati-suggerimenti altri" ng-if="attendiRisultati">Caricamento...</p>
+  </div>
+</form>
+<br>
+
+<style>
+  div.container-suggerimenti {
+    position: absolute;    
+    z-index: 99;
+    margin: 0;
+    left: 0; right: 0;
+    box-shadow: 0 1px 5px -2px black;
+    border-radius: 0 0 5px 5px;
+    background: white;
+  } p.risultati-suggerimenti {
+    line-height: 2em;
+    margin: 0 2em 0 0;
+    width: 100%;
+    border-top: 0px;    
+    padding: 0 0.5em 0 0.5em;
+  } p.risultati-suggerimenti:hover {
+    cursor: pointer;
+    color: white;
+    background: rgb(31, 146, 253);
+  } p.risultati-suggerimenti.altri:hover {
+    cursor: inherit;
+    color: inherit;
+    font-weight: inherit;
+    background: transparent;
+  }
+</style>

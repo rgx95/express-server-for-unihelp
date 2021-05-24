@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-6">
+    <cerca-suggerimento 
+      info="universita" 
+      disabled="universitaFilled" 
+      filled="universitaFilled" 
+      placeholder="Cerca Università..." 
+      selected-id="selectedId" 
+      symbol="trash"
+      value="universita"></cerca-suggerimento> 
+  </div>  
+  <div class="col-md-6">
+    <cerca-suggerimento 
+      info="esami" 
+      disabled="!universitaFilled" 
+      placeholder="Cerca Esame..." 
+      request-path="'universita/'+selectedId+'/esami/'"
+      value="esame"></cerca-suggerimento>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <button class="btn btn-info btn-block" ng-click="cerca()">Cerca</button>
+  </div>
+</div>

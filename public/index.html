@@ -51,8 +51,8 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li ng-if="!user"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          <li ng-if="user"><a href="" ng-click="sessDestroy()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          <li ng-if="!user"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Accedi</a></li>
+          <li ng-if="user"><a href="" ng-click="sessDestroy()"><span class="glyphicon glyphicon-log-out"></span> Esci</a></li>
         </ul>
       </div>
     </div>
@@ -116,8 +116,9 @@
 
   <!-- directives -->
   <script src="js/directives/login.js"></script>
-  <script src="js/directives/cercaUniCorsoEsame.js"></script>
-  <script src="js/directives/campoModificabile.js"></script>
+  <script src="js/directives/cercaUniEsame.js"></script>
+  <script src="js/directives/campoModificabile.js"></script>  
+  <script src="js/directives/cercaSuggerimento.js"></script>
 
   <!-- services -->
   <script src="js/services/getData.js"></script>
