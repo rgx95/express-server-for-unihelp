@@ -45,8 +45,10 @@
 
     <fieldset>
       <p>Università </p>
-      <h4 ng-show="!uniEditMode">{{ uni }}  <button class="btn btn-link" ng-click="uniEditMode = true">Modifica</button></h4>
-      <cerca-suggerimento ng-show="uniEditMode" info="universita" symbol="ok"></cerca-suggerimento>
+      <h4 ng-show="!uniEditMode">{{ uni }}  
+        <button class="btn btn-link" ng-click="uniEditMode = true">Modifica</button>
+      </h4>
+      <cerca-suggerimento ng-show="uniEditMode" info="universita" selected-id="selectedId" hide-on-confirm="true" symbol="ok" click-handler="clickHandler('universita', selectedId)"></cerca-suggerimento>
       <br>
       <campo-modificabile field-name="matricola" field-value="{{matricola}}"></campo-modificabile>
     </fieldset> 

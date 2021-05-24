@@ -1,6 +1,6 @@
 var app = angular.module('app', ["ui.router"])
 
-app.controller('main', ['$scope', 'sessExists', '$http', function($scope, sessExists, $http) {
+app.controller('main', ['$scope', 'sessExists', 'sessDestroy', '$http', function($scope, sessExists, sessDestroy, $http) {
   sessExists.then(function(response){
     if (response.status === 200) {
       console.log(response.status)
@@ -12,7 +12,9 @@ app.controller('main', ['$scope', 'sessExists', '$http', function($scope, sessEx
     }
   })
 
-  $scope.sessDestroy = function() {
+  $scope.logout = sessDestroy
+
+  /*$scope.sessDestroy = function() {
     $http.get('/sessDestroy')
     .then(function(response) {
       console.log(response)
@@ -23,7 +25,7 @@ app.controller('main', ['$scope', 'sessExists', '$http', function($scope, sessEx
     }, function(reason) {
       console.log(reason)
     })
-  }
+  }*/
 }])
 
 

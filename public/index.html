@@ -52,7 +52,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li ng-if="!user"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Accedi</a></li>
-          <li ng-if="user"><a href="" ng-click="sessDestroy()"><span class="glyphicon glyphicon-log-out"></span> Esci</a></li>
+          <li ng-if="user"><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> Esci</a></li>
         </ul>
       </div>
     </div>
@@ -124,7 +124,8 @@
   <script src="js/services/getData.js"></script>
   <script src="js/services/loginService.js"></script>
   <script src="js/services/sessExists.js"></script>  
-  <script src="js/services/modificaUtente.js"></script>
+  <script src="js/services/modificaUtente.js"></script>  
+  <script src="js/services/sessDestroy.js"></script>
 
 </body>
 </html>

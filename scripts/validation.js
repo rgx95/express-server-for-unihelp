@@ -45,6 +45,9 @@ validation.validaModifica = function(field, value) {
     case 'matricola':
       return this.matricola(value)
       break;
+    case 'universita':
+      return true
+      break;
     default:
       return false
       break;

@@ -9,7 +9,8 @@ app.directive('cercaSuggerimento', ['getData', '$timeout', function(getData, $ti
       placeholder: '@?',
       disabled: '=?',
       requestPath: '=?',
-      symbol: '@' //acceptable values for symbol 'menu-right', 'trash'
+      symbol: '@', //acceptable values for symbol 'menu-right', 'trash'
+      clickHandler: '&?'
     },
     templateUrl: 'js/directives/cercaSuggerimento.html',
     controller: ['$scope', function($scope) {
