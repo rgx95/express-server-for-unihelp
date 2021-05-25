@@ -3,13 +3,16 @@
 </div>   
 
 
+
 <div class="container" style="padding: 0 10vw 0 10vw;">
   <!-- image -->
-  <div style="position: relative;"  ng-show="user">
+  <div class = "profile-pic-div" style="position: relative;"  ng-show="user">
       <img src="../img/blank-profile.png" class="immagine-profilo centra">
+      <input type="file" id="file-immagine">
+      <label for="file-immagine" id="uploadBtn">Cambia foto</label>
       <button type="button" class="btn btn-info centra punteggio-profilo">Punti <span class="badge">{{ punti }} {{ punti >= 0 ? '+' : '-' }}</span></button>
   </div>
-
+  <script src="js/img-profile.js"></script>
   <br><br>
   <br><br>
 

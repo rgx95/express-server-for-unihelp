@@ -105,6 +105,24 @@ img[class*="immagine-profilo"] {
   transform: translateX(-50%);
 }
 
+#file-immagine {
+  display:none;
+}
+ 
+ 
+#uploadBtn{
+  height: 2.5em;
+  width: 120px;
+  position:absolute;
+  bottom: 3em;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.55);
+  color: wheat;
+  line-height: 30px;
+  cursor: pointer;
+} 
 
 
 /******************************************************
@@ -112,6 +130,16 @@ img[class*="immagine-profilo"] {
                     media queries
 
 *******************************************************/
+
+@media screen and (min-width: 960px) {
+  #uploadBtn{
+    
+    bottom: 1em;
+    
+  } 
+  
+}
+
 
 
 @media screen and (max-width: 960px) {
