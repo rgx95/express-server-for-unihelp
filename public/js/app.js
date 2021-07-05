@@ -50,8 +50,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         templateUrl: "views/chiSiamo.html"
     })
     .state('assistenza', {
-      url: "/assistenza",
-      templateUrl: "views/assistenza.html"
+        url: "/assistenza",
+        templateUrl: "views/assistenza.html",
+        controller: "AssistenzaController"
     })
     .state('login', {
       url: "/login",

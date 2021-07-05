@@ -4,7 +4,40 @@ const accountRouter = express.Router()
 const connessioneDataBase = require('../scripts/connessioneDataBase')
 const validation = require('../scripts/validation')
 
+// mail
+var nodemailer = require('nodemailer');
 
+var transporter = nodemailer.createTransport({
+  auth: {
+    user: 'luca.ruggirello95@gmail.com',
+    pass: 'aknfuhgskcvdyood'
+  },
+  host: 'smtp.gmail.com'
+});
+
+const mailConfirmationKeys = []
+
+const sendConfirmationEmail = (obj) => {
+  console.log(obj)
+  mailConfirmationKeys.push(obj)
+  var mailOptions = {
+    from: 'luca.ruggirello95@gmail.com',
+    to: obj.to,
+    subject: 'Conferma cambio email',
+    html: '<h1>Conferma cambio email</h1><br><br><a href="http://localhost:4001/confirmEmail?k='+obj.key+'"><button>Conferma</button></a><br><em>conferma l\'email entro 24h per riattivare l\'account</em>'
+  };
+
+  console.log(mailOptions)
+
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+
+}
 
 accountRouter.get('/login', (req, res, next) => {
   let user = req.query.user
@@ -97,6 +130,11 @@ accountRouter.put('/update', (req, res, next) => {
         
         req.session.user[req.query.field.toUpperCase()] = req.query.value
 
+        if (field == 'ATTIVO = 0, MAIL') {
+          console.log({to: req.query.value, key: Math.random()*10000000*(new Date())})
+          sendConfirmationEmail({to: req.query.value, key: Math.random()*10000000*(new Date())})
+        }
+
         res.json(req.session)
       }
     })
@@ -104,6 +142,50 @@ accountRouter.put('/update', (req, res, next) => {
     connessioneDataBase.chiudi()
 
   }
+})
+
+accountRouter.get('/confirmEmail', (req, res, next) => {
+  const key = req.query.k
+  let index = -1
+  let mail
+
+  console.log(mailConfirmationKeys)
+  
+  mailConfirmationKeys.forEach((el, i) => {
+    if (el.key == key) {
+      index = i
+      mail = el.to
+    }
+  })
+
+  console.log(key + ' ' + index + ' ' + mail)
+
+  if (index == -1) {
+    return res.status(500).send()
+  }
+
+  connessioneDataBase.apri()
+  let db = connessioneDataBase.db
+
+  db.run(`UPDATE UTENTI SET ATTIVO = 1 WHERE MAIL = ?`, [mail], function(err) {
+    if (err) {
+      console.log(err)
+      res.status(500).redirect('http://localhost:4001/#!/erroreConfermaEmail')
+    } else {
+      console.log(`Row(s) updated: ${this.changes}`)
+    }
+  })
+
+  connessioneDataBase.chiudi()
+
+  mailConfirmationKeys.splice(index, 1)
+
+  res.status(200).redirect('http://localhost:4001/#!/emailConfermata')
+
+})
+
+accountRouter.post('/register', (req, res, next) => {
+  
 })
 
 

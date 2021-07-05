@@ -13,16 +13,16 @@
 
   <br>
 
-  <div class="alert alert-info">
+  <div class="alert alert-info" ng-if="!logged">
     <b>Attenzione!</b> Visto che non hai effettuato l'accesso al sito
     Ti chiediamo di lasciarci la tua e-mail col solo fine di poterti ricontattare
   </div> 
   
-  <textarea class="form-control" style="width:100%;" rows="1" maxlength="100" placeholder="Indirizzo Email..."></textarea>
+  <textarea  ng-if="!logged" class="form-control" style="width:100%;" rows="1" maxlength="100" placeholder="Indirizzo Email..."></textarea>
     
   <br>
 
-  <input name="accetto" type="checkbox">
+  <input name="accetto" type="checkbox" ng-if="!logged">
   <laber for="accetto">Accetto il trattamento dei dati per i soli fini della risoluzione dei problemi legati alla richiesta dell' utente.
   
   <br><br>
