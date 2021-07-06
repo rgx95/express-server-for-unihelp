@@ -18,6 +18,10 @@ app.use(morgan('dev'));
 // declaring static folder
 app.use(express.static('public'));
 
+// body-parser
+app.use(express.json());       // JSON-encoded bodies
+app.use(express.urlencoded({extended: true})); // url-encoded bodies
+
 
 
 // session

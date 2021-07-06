@@ -4,6 +4,7 @@ const accountRouter = express.Router()
 const connessioneDataBase = require('../scripts/connessioneDataBase')
 const validation = require('../scripts/validation')
 
+
 // mail
 var nodemailer = require('nodemailer');
 
@@ -23,8 +24,8 @@ const sendConfirmationEmail = (obj) => {
   var mailOptions = {
     from: 'luca.ruggirello95@gmail.com',
     to: obj.to,
-    subject: 'Conferma cambio email',
-    html: '<h1>Conferma cambio email</h1><br><br><a href="http://localhost:4001/confirmEmail?k='+obj.key+'"><button>Conferma</button></a><br><em>conferma l\'email entro 24h per riattivare l\'account</em>'
+    subject: 'Conferma email',
+    html: '<h1>Conferma email</h1><br><br><a href="http://localhost:4001/confirmEmail?k='+obj.key+'"><button>Conferma</button></a><br><em>conferma l\'email entro 24h per riattivare l\'account</em>'
   };
 
   console.log(mailOptions)
@@ -131,8 +132,7 @@ accountRouter.put('/update', (req, res, next) => {
         req.session.user[req.query.field.toUpperCase()] = req.query.value
 
         if (field == 'ATTIVO = 0, MAIL') {
-          console.log({to: req.query.value, key: Math.random()*10000000*(new Date())})
-          sendConfirmationEmail({to: req.query.value, key: Math.random()*10000000*(new Date())})
+          sendConfirmationEmail({to: req.query.value, key: Math.random()*10000000*(new Date()), datetime: new Date()})
         }
 
         res.json(req.session)
@@ -185,7 +185,37 @@ accountRouter.get('/confirmEmail', (req, res, next) => {
 })
 
 accountRouter.post('/register', (req, res, next) => {
+  console.log(req.body)
   
+  let mail
+  let username
+  let password 
+  
+  if ((validation.mail(req.body.mail) && validation.username(req.body.username) && validation.password(req.body.password))) {
+    mail = req.body.mail
+    username = req.body.username
+    password = req.body.password
+  } else {
+    return res.status(400).send();
+  }  
+  
+
+  connessioneDataBase.apri()
+  let db = connessioneDataBase.db
+
+  db.run(`INSERT INTO UTENTI (ATTIVO, MAIL, USERNAME, PASSWORD, PUNTI) VALUES (0, ?, ?, ?, 0)`,[
+    mail, username, password
+  ], function(err) {
+    if (err) {
+      console.log(err)
+      return res.status(500).send();
+    } else {
+      sendConfirmationEmail({to: mail, key: Math.random()*10000000*(new Date()), datetime: new Date()})
+      res.status(201).send()
+    }
+  })
+
+  connessioneDataBase.chiudi()
 })
 
 
