@@ -7,6 +7,7 @@ const validation = require('../scripts/validation')
 
 // mail
 var nodemailer = require('nodemailer');
+const { send } = require('process');
 
 var transporter = nodemailer.createTransport({
   auth: {
@@ -196,7 +197,8 @@ accountRouter.post('/register', (req, res, next) => {
     username = req.body.username
     password = req.body.password
   } else {
-    return res.status(400).send();
+    return res.status(400).send()
+    //res.redirect('http://localhost:4001/#!/registra');
   }  
   
 
@@ -211,6 +213,7 @@ accountRouter.post('/register', (req, res, next) => {
       return res.status(500).send();
     } else {
       sendConfirmationEmail({to: mail, key: Math.random()*10000000*(new Date()), datetime: new Date()})
+      //res.status(201).redirect('http://localhost:4001/#!/login')
       res.status(201).send()
     }
   })

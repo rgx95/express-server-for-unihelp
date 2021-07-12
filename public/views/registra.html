@@ -1,51 +1,65 @@
 <div class="bg-view">
-  <h1 class="title">Reg&iacute;strati</h1>
+  <h1 class="title">Registrati</h1>
 </div>
 
 <div class="container">
-  <br>
-  <form action="" method="post">
-    <div class="row">
-      <div class="col-sm-6 ">
-        <input type="text" name="mail" autofocus style="width:80%;" maxlength="100" value="" placeholder="Scrivi la tua email.." ><span class="error"></span>
-        <br>
-        <label for="mail"><b>Email* </b></label>
-      </div>	
-      <div class="col-sm-6 ">
-        <input type="text" name="user" autofocus style="width:80%;" maxlength="100" value="" placeholder="Nickname.." >
-        <br>
-        <span class="error"></span>
-        <label for="user" autocomplete="off"><b>Crea un nickname* </b></label>
-      </div>
-    </div>				
-    <br>
-    <div class="row">
-      <div class="col-sm-6">
-        <input type="password" name="pass" autofocus style="width:80%;" maxlength="100" value="" placeholder="Password.." >
-        <span class="error"></span> <br>
-        <label for="pass" autocomplete="off"><b>Crea una password*</b></label>
-      </div>
-      <div class="col-sm-6">
-        <input type="password" name="repass" autofocus style="width:80%;" maxlength="100" value=""placeholder="Password.." >
-        <span class="error"></span><br>
-        <label for="repass" autocomplete="off"><b>Ripeti la password* </b></label>
-    </div>
-    </div>				
+
+  <form action="/register" method="post" style="max-width: 600px; margin: auto;">
+
+    <h1>Crea Account</h1>
     <br>
     
-    		
+    <div class="form-group">
+      <label for="mail">Email</label>
+      <input type="text" class="form-control" name="mail" autofocus maxlength="100" placeholder="Email.." >
+      <span class="error"></span>
+    </div>
+
     <br>
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
-        <input type="submit" value="Registrati" />
+
+    <div class="form-group">
+      <label for="user">Username</label>
+      <input type="text" class="form-control" name="username" maxlength="15" placeholder="Username.." >
+      <span class="error"></span>
+      <br>
+      <div class="alert alert-info">
+        8 - 15 caratteri, lettere e numeri
       </div>
-    </div>				
+    </div>
+
     <br>
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
-        <h4>Se hai già un account, <a href="#!login.php">clicca qui.</a></h4>
+    
+    <div class="form-group">      
+      <label for="pass">Password</label>
+      <input type="password" class="form-control" name="password" maxlength="15" placeholder="Password.." >
+      <span class="error"></span>
+      <br>
+
+      <div class="alert alert-info">
+        8 - 15 caratteri, lettere e numeri, almeno una maiuscola, almeno un carattere speciale
       </div>
-    </div>				
+    </div>
+
+    <div class="form-group">      
+      <label for="repass">Ripeti password</label>
+      <input type="password" class="form-control" maxlength="15" placeholder="Password.." >
+      <span class="error"></span>
+    </div>  
+    
+    <br>
+    
+    
+    <div class="form-group">
+      <input type="submit" class="form-control btn btn-info" value="Registrati" />
+      
+    </div>
+
+    <hr>
+    <div style="position: relative; top: -30px; margin: auto; background-color: white; width: min-content;">&nbsp;o&nbsp;</div>    
+
+    <p class="text-center">Se hai già un account, <a href="#!login">Accedi</a></p>
+        		
   </form>
+
 </div>
 <br>

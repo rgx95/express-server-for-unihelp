@@ -64,4 +64,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       templateUrl: "views/profilo.html",
       controller: "ProfiloController"
     })
+    .state('registra', {
+      url: "/registra",
+      templateUrl: "views/registra.html"
+    })
 }]);
